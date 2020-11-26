@@ -1,0 +1,17 @@
+<ul>
+    <li *ngFor="let lien of links; let i = index">
+        <a [routerLink]="lien.url"
+            (click)="toggleVisible(i)"
+            [ngClass]="{'master' : lien.children}"
+            >
+            {{lien.title}}
+        </a>
+        <ul *ngIf="lien.children && lien.isVisible">
+            <li *ngFor="let sousLien of lien.children">
+                <a [routerLink]="sousLien.url">
+                    {{sousLien.title}}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
